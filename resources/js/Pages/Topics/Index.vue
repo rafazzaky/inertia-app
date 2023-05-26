@@ -36,13 +36,14 @@ const props = defineProps({
                         </thead>
                         <tbody>
                             <tr v-for="topic in topics" :key="topic.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="flex items-center font-medium px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="">
                                         {{topic.name}}
                                     </div>  
                                 </th>
                                 <td class="px-6 py-4">
-                                    <img :src="topic.image" class="w-12 max-h-12 rounded" alt="">
+                                    <!-- <img :src="topic.image" class="w-12 max-h-12 rounded" alt=""> -->
+                                    <img :src="topic.image.replace('http://inertia-app.test/storage/', '')" class="w-18 max-h-12 rounded" alt="">
                                 </td>
                                 <td class="px-6 py-4 flex justify-end">
                                         <Link :href="`/topics/${topic.id}/edit`" class="text-indigo-400 hover:text-indigo-500 mr-2">Edit</Link>
