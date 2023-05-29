@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -28,13 +29,18 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreArticleRequest $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'topic_id' => 'required|exists:topics,id',
-        ]);
+        // store(Request $request)
+        // $validatedData = $request->validate([
+        //     'title' => 'required',
+        //     'content' => 'required',
+        //     'topic_id' => 'required|exists:topics,id',
+        // ]);
+
+        // Article::create($validatedData);
+
+        $validatedData = $request->validated();
 
         Article::create($validatedData);
 

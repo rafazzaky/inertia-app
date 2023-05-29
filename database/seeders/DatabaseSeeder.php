@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@gmail.com',
             'password' => '12345678'
         ]);
-        Topic::factory()->count(10)->create();
         Article::factory()->count(10)->create();
     }
 
