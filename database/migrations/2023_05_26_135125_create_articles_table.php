@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('topic_id');
             $table->foreign('topic_id')->references('id')->on('topics');
-            // Add other columns for the article (e.g., title, content, etc.)
             $table->string('title');
             $table->text('content');
             $table->timestamps();

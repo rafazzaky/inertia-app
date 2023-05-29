@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class TopicResource extends JsonResource
 {
-    public function toArray($request)
+    public function toArray($request=null)
     {
         return [
             'id' => $this->id,
