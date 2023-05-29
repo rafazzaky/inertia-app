@@ -17,13 +17,10 @@ class ArticleResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            // 'content' => $this->content,
             'topic' => [
-                // 'id' => $this->topic->id,
                 'name' => $this->topic->name,
             ],
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
-            // 'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }
