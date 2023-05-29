@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use App\Models\Topic;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -13,10 +14,8 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::with('topic')->get();
-
         return Inertia::render('Articles/Index', [
-            'articles' => $articles,
+            'articles' => ArticleResource::collection(Article::with('topic')->get())->toArray(Request::instance()),
         ]);
     }
 
@@ -31,14 +30,6 @@ class ArticleController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
-        // store(Request $request)
-        // $validatedData = $request->validate([
-        //     'title' => 'required',
-        //     'content' => 'required',
-        //     'topic_id' => 'required|exists:topics,id',
-        // ]);
-
-        // Article::create($validatedData);
 
         $validatedData = $request->validated();
 
