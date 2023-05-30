@@ -17,6 +17,7 @@ class ArticleUploadedMail extends Mailable
 
     public $user;
     public $article;
+    protected $title;
 
     /**
      * Create a new message instance.
@@ -28,6 +29,7 @@ class ArticleUploadedMail extends Mailable
     {
         $this->user = $user;
         $this->article = $article;
+        $this->title = $article->title;
     }
 
     /**
@@ -37,7 +39,8 @@ class ArticleUploadedMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.article-uploaded')
-                    ->subject('Article Uploaded Notification');
+        return $this->view('emails.article-uploaded',[
+            'title' => $this->title
+        ])->subject('Article Uploaded Notification');
     }
 }
