@@ -9,6 +9,7 @@ use App\Models\Topic;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Jobs\SendArticleEmail;
 
 class ArticleController extends Controller
 {
@@ -33,7 +34,9 @@ class ArticleController extends Controller
 
         $validatedData = $request->validated();
 
-        Article::create($validatedData);
+        $article = Article::create($validatedData);
+
+        SendArticleEmail::dispatch($request->user(), $article);
 
         return Redirect::route('articles.index');
     }

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@gmail.com',
+            'email' => 'rafiazzakymc@gmail.com',
             'password' => '12345678'
         ]);
         Article::factory()->count(10)->create();
